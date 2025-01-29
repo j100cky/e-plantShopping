@@ -26,6 +26,7 @@ export const CartSlice = createSlice({
     removeItem: (state, action) => {
         state.items = state.items.filter(item => item.name !== action.payload);
     },
+
     updateQuantity: (state, action) => {
         const {name, quantity} = action.payload;
         const existingItem = state.items.find(item => item.name === name);
@@ -38,5 +39,6 @@ export const CartSlice = createSlice({
 });
 
 export const { addItem, decreaseItem, removeItem, updateQuantity } = CartSlice.actions;
-
+// Add a selector for cart items to check if an item is in the cart
+export const selectCartItems = (state) => state.cart.items;
 export default CartSlice.reducer;
